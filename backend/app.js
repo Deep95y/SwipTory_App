@@ -29,3 +29,5 @@ app.listen(PORT, () => {
     .then(() => console.log('server is up'))
     .catch((error) => console.log(error))
 })
+
+module.exports = app;
