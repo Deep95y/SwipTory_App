@@ -3,31 +3,31 @@ const app = express();
 require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require('cors');
-const PORT = 5000;
+const PORT = process.env.PORT || 3000;
 
 const auth = require('./auth');
 const createapi = require('./createapi');
 const { router } = require('./useraction');
 
-const corsOptions = {
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-};
 
 app.use(express.json()); 
-app.use(cors(corsOptions)); 
-app.options("*", cors);
+app.use(cors()); 
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
 app.use('/', auth);
 app.use('/', createapi);
 app.use('/', router);
 
-app.listen(PORT, () => {
-    mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('server is up'))
-    .catch((error) => console.log(error))
-})
+mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Connected to MongoDB');
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+        process.exit(1); // Exit process if MongoDB connection fails
+    });
 
 module.exports = app;
