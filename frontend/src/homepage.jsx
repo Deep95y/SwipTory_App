@@ -667,7 +667,7 @@ const Homepage = () => {
       </Modal>
 
       <Modal
-        isOpfen={showstory}
+        isOpen={showstory}
         onRequestClose={handleCloseStory}
         style={customStyles}
       >
