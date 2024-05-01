@@ -9,8 +9,16 @@ const auth = require('./auth');
 const createapi = require('./createapi');
 const { router } = require('./useraction');
 
+const corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+};
+
 app.use(express.json()); 
-app.use(cors()); 
+app.use(cors(corsOptions)); 
+app.options("*", cors);
 
 app.use('/', auth);
 app.use('/', createapi);
