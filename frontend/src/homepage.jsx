@@ -401,69 +401,8 @@ const Homepage = () => {
             );
           })}
         </Carousel>
-        {/* <Carousel 
-        showThumbs={false} 
-        infiniteLoop={false} 
-        autoPlay={false} 
-        showArrows={true} 
-        swipeable={true} 
-        >
-          <div 
-            style={{ height: "12rem", display: "flex", flexDirection: "row" }}
-          >
-            <div className="boxStyle" style={{ marginLeft: "1rem" }} onClick={(e) => handleGetAll()}>
-              <div
-                style={{
-                  position: "absolute",
-                  color: "white",
-                  marginLeft: "4rem",
-                  marginTop: "4rem",
-                }}
-              >
-                All
-              </div>
-              <img className="category-image"
-                src="All.jpg"
-                style={{
-                  height: "8.5rem",
-                  width: "8.5rem",
-                  borderRadius: "1rem",
-               
-                }}
-              />
-            </div>
-            {categoryListing.map((category, index) => (
-              <div
-                key={index}
-                style={{ marginLeft: "2rem" }}
-                onClick={(e) => handleCategoryListing(category)}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    color: "white",
-                    marginLeft: "3rem",
-                    marginTop: "4rem",
-                  }}
-                >
-                  {category}
-                </div>
-                <img className="category-image"
-                  src={category + ".jpg"}
-                  style={{
-                    height: "8.5rem",
-                    width: "8.5rem",
-                    borderRadius: "1rem",
-                    borderColor:'blue'
-                  }}
-                />
-               </div>
-            ))}
-          </div>
-        </Carousel> */}
 
-
-
+        
         {!!token ? (
           <div>
             <div style={{ marginLeft: "45%" }}>
